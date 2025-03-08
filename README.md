@@ -32,7 +32,7 @@ npm install
 
 Start the development server:
 ```sh
-npm start
+npm run dev
 ```
 The app will be available at `http://localhost:5173/`.
 
