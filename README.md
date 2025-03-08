@@ -1,12 +1,71 @@
-# React + Vite
+## Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A brief description of your project goes here.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+--Uses React 19 for frontend development
 
-## Expanding the ESLint configuration
+-- Charts powered by Chart.js and react-chartjs-2
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-- Axios for API calls
+
+-- React Router for navigation
+
+React Spinners for loading indicators
+
+React Toastify for notifications
+
+React Progress Bar for progress tracking
+
+Tech Stack
+
+Frontend: React.js
+
+State Management: React Hooks
+
+UI Components: React Icons, React Spinners, React Toastify
+
+Data Visualization: Chart.js, React Chart.js 2
+
+Networking: Axios
+
+Installation and Setup
+
+Prerequisites
+
+Make sure you have the following installed:
+
+Node.js (latest stable version)
+
+npm or yarn package manager
+
+Steps to Run Locally
+
+Clone the repository:
+
+git clone https://github.com/yourusername/your-repo-name.git
+
+Navigate to the project directory:
+
+cd your-repo-name
+
+Install dependencies:
+
+npm install  # or yarn install
+
+Start the development server:
+
+npm run dev  # or yarn dev
+
+Open your browser and visit:
+
+http://localhost:3000
+
+Scripts
+
+npm run dev – Starts the development server
+
+npm run build – Builds the project for production
+
+npm run start – Starts the production build
