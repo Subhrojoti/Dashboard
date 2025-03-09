@@ -1,4 +1,8 @@
-# Project Name
+# Dashboard
+
+**use this credential to login**
+-- email:michael.lawson@reqres.in 
+-- password- qwe123
 
 ## Description
 Made a React project with login/logout, protected routes, and data fetching from PokéAPI. Used Toastify for notifications, React Spinners for loaders, and Axios for API calls. Styled with Tailwind CSS and used Vite for fast development. 🚀
