@@ -32,6 +32,17 @@ const Dashboard = () => {
     "Settings",
   ];
 
+  const colors = [
+    "bg-red-200",
+    "bg-blue-200",
+    "bg-green-200",
+    "bg-yellow-200",
+    "bg-purple-200",
+    "bg-pink-200",
+    "bg-indigo-200",
+    "bg-gray-200",
+  ];
+
   const spendingCategories = [
     {
       category: "Weight",
@@ -120,159 +131,146 @@ const Dashboard = () => {
     <>
       <div>
         {loading ? (
-          <div className="h-screen w-full">
+          <div className="h-screen w-full flex items-center justify-center">
             <ClipLoader
               color={color}
               loading={loading}
               cssOverride={override}
-              size={150}
+              size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
             />
           </div>
         ) : (
-          <section className="w-full bg-black text-white  flex p-7">
+          <section className="w-full bg-black text-white flex flex-col lg:flex-row p-4 lg:p-7">
             {/* Menu Items */}
-            <div className="w-1/6 flex flex-col py-10 px-4 gap-20">
+            <div className="lg:w-1/6 w-full flex flex-col items-center lg:items-start py-6 px-6 gap-10">
               {/* Profile */}
-              <div className="profile flex flex-col gap-2 ">
-                <div className="rounded-lg  w-14 bg-white relative">
+              <div className="profile flex flex-col gap-2 items-center lg:items-start">
+                <div className="rounded-lg w-14 bg-white relative">
                   <img className="rounded-lg" src={profileData?.data?.avatar} />
                   <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
                     4
                   </div>
                 </div>
-                <h1 className="font-semibold text-4xl">
+                <h1 className="font-semibold text-2xl lg:text-4xl text-center lg:text-left">
                   {profileData?.data?.first_name}
                 </h1>
-                <p className="text-gray-400 font-light ">
+                <p className="text-gray-400 font-light text-center lg:text-left">
                   {profileData?.data?.email}
                 </p>
               </div>
               {/* Nav Items */}
-              <div className="text-3xl font-medium mt-6">
+              <div className="text-xl lg:text-3xl font-medium mt-6 text-center lg:text-left">
                 {navItems.map((items, i) => (
-                  <p key={i} className="mb-7">
+                  <p key={i} className="mb-5 lg:mb-7">
                     {items}
                   </p>
                 ))}
               </div>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 rounded-sm self-center bg-red-500 mr-8"
+                className="px-4 py-2 rounded-sm bg-red-500 w-full lg:w-auto text-center"
               >
                 Logout
               </button>
             </div>
             {/* Content */}
-            <div className="w-5/6 bg-slate-50 rounded-3xl flex overflow-hidden">
-              <div className="w-3/4 bg-white text-black px-20 py-16">
-                <div className="flex items-center justify-between">
+            <div className="lg:w-5/6 w-full bg-slate-50 rounded-3xl flex flex-col lg:flex-row overflow-hidden">
+              <div className="lg:w-3/4 w-full bg-white text-black px-6 md:px-28 py-8 md:py-16">
+                <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                       Pokémon Performance
                     </h2>
                     <p className="text-gray-500 text-sm">XP Gained: 1 - 300</p>
                   </div>
-                  <div className="flex items-center -space-x-2">
-                    <img
-                      src="https://randomuser.me/api/portraits/women/1.jpg"
-                      alt="User 1"
-                      className="w-8 h-8 rounded-full border-2 border-white"
-                    />
-                    <img
-                      src="https://randomuser.me/api/portraits/men/2.jpg"
-                      alt="User 2"
-                      className="w-8 h-8 rounded-full border-2 border-white"
-                    />
-                    <img
-                      src="https://randomuser.me/api/portraits/men/3.jpg"
-                      alt="User 3"
-                      className="w-8 h-8 rounded-full border-2 border-white"
-                    />
+                  <div className="flex items-center -space-x-2 mt-4 md:mt-0">
+                    {[1, 2, 3].map((num) => (
+                      <img
+                        key={num}
+                        src={`https://randomuser.me/api/portraits/${
+                          num % 2 ? "women" : "men"
+                        }/${num}.jpg`}
+                        className="w-8 h-8 rounded-full border-2 border-white"
+                      />
+                    ))}
                     <button className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-gray-300 text-gray-500 hover:bg-gray-200">
                       +
                     </button>
                   </div>
                 </div>
-                <div className="h-[250px]">
+                <div className="h-48 md:h-[210px]">
                   <BarChart />
                 </div>
-                <p className="mt-4">Pokemon</p>
+                <p className="mt-5 font-semibold">Pokemon</p>
                 <hr />
-
-                {/* pokemon section map */}
                 {pokemon.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between py-4 bg-white rounded-lg  w-full mt-1"
+                    className="flex flex-col sm:flex-row items-center justify-between py-4 bg-white rounded-lg w-full mt-1"
                   >
-                    {/* Left Section */}
                     <div className="flex items-center gap-4">
-                      {/* Icon */}
-                      <div className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center">
-                        <img src={item?.sprites?.front_default} />
+                      <div
+                        className={`w-12 h-12 ${
+                          colors[i % colors.length]
+                        } rounded-full flex items-center justify-center`}
+                      >
+                        <img
+                          src={item?.sprites?.front_default}
+                          className="w-10 h-10"
+                        />
                       </div>
-
-                      {/* Text Details */}
                       <div>
-                        <p className=" text-gray-900 font-semibold">
-                          {item?.name?.charAt(0).toUpperCase() +
-                            item?.name?.slice(1).toLowerCase()}
+                        <p className="text-gray-900 font-semibold">
+                          {item?.name}
                         </p>
                         <p className="text-xs text-gray-400">
                           {item?.types
-                            .map((typeItem) => typeItem?.type?.name)
+                            .map((type) => type?.type?.name)
                             .join(", ")}
                         </p>
                       </div>
                     </div>
-
                     <p className="text-black font-bold">
                       {item?.base_experience} EXP Level
                     </p>
                   </div>
                 ))}
               </div>
-              <div className="w-1/4 bg-[#F9FAFC] px-12 py-20">
-                <p className="text-black font-semibold text-lg mb-7">
+              <div className="lg:w-1/4 w-full bg-[#F9FAFC] px-6 md:px-12 py-10 md:py-20">
+                <p className="text-black font-semibold text-lg mb-7 text-center md:text-left">
                   How strong is your Pokémon?
                 </p>
                 {spendingCategories.map((item, index) => (
-                  <div key={index} className="mb-4">
-                    <div className="flex justify-between text-gray-900 font-medium">
+                  <div key={index} className="mb-9">
+                    <div className="flex justify-between  font-semibold text-gray-600">
                       <span>{item.category}</span>
                       <span>{item.amount}</span>
                     </div>
                     <div className="w-full bg-gray-200 h-1.5 rounded-full mt-2">
-                      <div>
-                        <ProgressBar
-                          completed={item.amount}
-                          isLabelVisible={false}
-                          height="10px"
-                          bgColor="#39b695"
-                        />
-                      </div>
+                      <ProgressBar
+                        completed={item.amount}
+                        isLabelVisible={false}
+                        height="7px"
+                        bgColor="#39b695"
+                      />
                     </div>
                   </div>
                 ))}
-                {/* Bottom Section */}
                 <div className="relative p-6 bg-gray-100 shadow-lg rounded-xl flex flex-col items-center text-center space-y-4 mt-32">
-                  {/* Image Container */}
                   <div className="w-full flex justify-between px-4 relative mb-10">
                     <img
                       src={boxes}
                       alt="Boxes"
-                      className="w-40 h-40 object-contain absolute -top-20 -left-2"
+                      className="w-24 h-24 md:w-40 md:h-40 object-contain absolute -top-10 md:-top-20 -left-2"
                     />
                     <img
                       src={leaf}
                       alt="Leaf"
-                      className="w-20 h-30 object-contain absolute -top-20 -right-2"
+                      className="w-12 h-12 md:w-20 md:h-20 object-contain absolute -top-10 md:-top-20 -right-2"
                     />
                   </div>
-
-                  {/* Text Content */}
                   <h3 className="text-gray-900 font-semibold text-lg">
                     Save more money
                   </h3>
@@ -280,9 +278,7 @@ const Dashboard = () => {
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                   </p>
-
-                  {/* View Tips Button */}
-                  <button className="bg-black text-white text-sm font-medium px-16  py-2 rounded-lg">
+                  <button className="bg-black text-white text-sm font-medium px-12 py-2 rounded-lg">
                     VIEW TIPS
                   </button>
                 </div>

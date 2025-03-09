@@ -30,7 +30,7 @@ const BarChart = () => {
   // console.log(allName);
   // console.log(expLevel);
 
-  const API = "https://pokeapi.co/api/v2/pokemon?limit=20";
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=23";
 
   const fetchPokemon = async () => {
     try {
@@ -57,16 +57,10 @@ const BarChart = () => {
     labels: allName,
     datasets: [
       {
-        label: "# of Votes",
+        label: "Exp Level",
         data: expLevel,
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
-          "rgba(255, 159, 64, 0.6)",
-        ],
+        backgroundColor: ["rgb(208,228,255"],
+        hoverBackgroundColor: ["rgb(21,122,255)"],
         borderWidth: 1,
       },
     ],
@@ -84,6 +78,30 @@ const BarChart = () => {
     scales: {
       y: {
         beginAtZero: true,
+        grid: {
+          display: false, // Removes horizontal grid lines
+          drawBorder: false, // Removes axis border
+          drawTicks: false,
+        },
+        ticks: {
+          display: false, // Hides Y-axis labels (numbers)
+        },
+        border: {
+          display: false, // **Ensures Y-axis border is completely removed**
+        },
+      },
+      x: {
+        grid: {
+          display: false, // Removes vertical grid lines
+          drawBorder: false, // Removes axis border
+          drawTicks: false,
+        },
+        ticks: {
+          display: false, // Hides X-axis labels (names)
+        },
+        border: {
+          display: false, // **Ensures Y-axis border is completely removed**
+        },
       },
     },
   };
