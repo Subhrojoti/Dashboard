@@ -144,7 +144,7 @@ const Dashboard = () => {
         ) : (
           <section className="w-full bg-black text-white flex flex-col lg:flex-row p-4 lg:p-7">
             {/* Menu Items */}
-            <div className="lg:w-1/6 w-full flex flex-col items-center lg:items-start py-6 px-6 gap-10">
+            <div className="lg:w-1/6 w-full flex flex-col items-center lg:items-start py-12 px-8 gap-14">
               {/* Profile */}
               <div className="profile flex flex-col gap-2 items-center lg:items-start">
                 <div className="rounded-lg w-14 bg-white relative">
