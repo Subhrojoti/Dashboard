@@ -212,9 +212,7 @@ const Dashboard = () => {
                   >
                     <div className="flex items-center gap-4">
                       <div
-                        className={`w-12 h-12 ${
-                          colors[i % colors.length]
-                        } rounded-full flex items-center justify-center`}
+                        className={`w-12 h-12 ${colors[i]} rounded-full flex items-center justify-center`}
                       >
                         <img
                           src={item?.sprites?.front_default}

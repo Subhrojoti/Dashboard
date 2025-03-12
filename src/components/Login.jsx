@@ -8,14 +8,14 @@ import {
 } from "react-icons/fa";
 import darkBackground from "../assets/dark-background.jpg";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const Navigate = useNavigate();
-  const auth = localStorage.getItem("token");
+  // const auth = localStorage.getItem("token");
   const notify = () => toast.success("Login Successfull");
   const error = () => toast.error("Incorrect Credential");
 
